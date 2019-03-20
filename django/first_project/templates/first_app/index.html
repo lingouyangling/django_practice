@@ -3,11 +3,32 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>First App</title>
+        <title></title>
         <link rel="stylesheet" href="{% static "css/my_css.css" %}">
     </head>
     <body>
-        <h1>Hello this is Peppa Pig!</h1>
-        <img src="{% static "images/peppa.jpg" %}" alt="peppa pig">
+        <h1>Hi, Welcome!</h1>
+        <h2>Here are your access records:</h2>
+
+        <div class="djangotwo">
+            {% if access_records %}
+                <table>
+                    <thead>
+                        <th>Site Name</th>
+                        <th>Date Accessed</th>
+                    </thead>
+
+                    {% for acc in access_records %}
+                    <tr>
+                        <td>{{ acc.name }}</td>
+                        <td>{{ acc.date }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p>NO ACCESS RECORDS FOUND!</p>
+            {% endif %}
+        </div>
+
     </body>
 </html>
